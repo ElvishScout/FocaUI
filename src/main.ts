@@ -1,24 +1,25 @@
-import './style.css'
-import typescriptLogo from './typescript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.ts'
+import "./style.css";
+import components from "./components";
 
-document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://www.typescriptlang.org/" target="_blank">
-      <img src="${typescriptLogo}" class="logo vanilla" alt="TypeScript logo" />
-    </a>
-    <h1>Vite + TypeScript</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite and TypeScript logos to learn more
-    </p>
-  </div>
-`
+let app = document.querySelector("fapp") || document.querySelector(".fapp");
 
-setupCounter(document.querySelector<HTMLButtonElement>('#counter')!)
+function rendered(elem: Element) {
+  console.log(elem.tagName);
+  let tagName = elem.tagName.toLowerCase();
+  if (tagName in components) {
+    let newElem = components[tagName].rendered(elem);
+    while (elem.firstChild) {
+      let child = elem.removeChild(elem.firstChild);
+      if (child instanceof Element) {
+        child = rendered(child);
+      }
+      newElem.appendChild(child);
+    }
+    return newElem;
+  }
+  return elem;
+}
+
+if (app) {
+  app.replaceWith(rendered(app));
+}

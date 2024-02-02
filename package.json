@@ -9,8 +9,12 @@
     "preview": "vite preview"
   },
   "devDependencies": {
+    "@types/jquery": "^3.5.29",
+    "@types/node": "^20.11.10",
+    "jquery": "^3.7.1",
     "markdown-it": "^14.0.0",
     "typescript": "^5.2.2",
+    "typia": "^5.4.1",
     "vite": "^5.0.8"
   }
 }
