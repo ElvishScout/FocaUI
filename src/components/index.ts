@@ -1,9 +1,4 @@
-import fapp from "./fapp";
-import fbutton from "./fbutton";
+export { type Component } from "./component";
 
-let components: { [name: string]: { rendered: (elem: Element) => Element } } = {
-  fapp,
-  fbutton,
-};
-
-export default components;
+export { fapp } from "./fapp";
+export { fbutton } from "./fbutton";

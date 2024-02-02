@@ -1,8 +1,10 @@
+import { Component } from "../component";
 import "./style.css";
 
-function rendered(elem: Element) {
-  let newElem = document.createElement("div");
-  return newElem;
-}
-
-export default { rendered };
+export let fapp: Component<HTMLDivElement> = {
+  name: "fapp",
+  render(elem, callback) {
+    let newElem = document.createElement("div");
+    return newElem;
+  },
+};
