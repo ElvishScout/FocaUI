@@ -4,7 +4,6 @@ import components from "./components";
 let app = document.querySelector("fapp") || document.querySelector(".fapp");
 
 function rendered(elem: Element) {
-  console.log(elem.tagName);
   let tagName = elem.tagName.toLowerCase();
   if (tagName in components) {
     let newElem = components[tagName].rendered(elem);
