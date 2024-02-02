@@ -1,7 +1,6 @@
+import jQuery from "jquery";
 import "./style.css";
 import components from "./components";
-
-let app = document.querySelector("fapp") || document.querySelector(".fapp");
 
 function rendered(elem: Element) {
   let tagName = elem.tagName.toLowerCase();
@@ -19,6 +18,10 @@ function rendered(elem: Element) {
   return elem;
 }
 
-if (app) {
-  app.replaceWith(rendered(app));
+let app = document.querySelector("fapp") || document.querySelector(".fapp");
+
+if (!app) {
+  throw "fapp not found.";
 }
+
+app.replaceWith(rendered(app));
